@@ -1,5 +1,5 @@
 import express from 'express'
-import { Login, Logout, Register, forgotPassword, resetPassword, getAllUsers } from '../controllers/Authcontroller.js'
+import { Login, Logout, Register, forgotPassword, resetPassword, getAllUsers, getAllAdmins } from '../controllers/Authcontroller.js'
 
 const AuthRoute = express.Router()
 
@@ -9,5 +9,6 @@ AuthRoute.get('/logout', Logout)
 AuthRoute.post('/forgot-password', forgotPassword)
 AuthRoute.post('/reset-password', resetPassword)
 AuthRoute.get('/users', getAllUsers)
+AuthRoute.get('/admins', getAllAdmins)
 
 export default AuthRoute; 

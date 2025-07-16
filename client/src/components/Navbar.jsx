@@ -74,7 +74,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex flex-col md:flex-row gap-2 px-6 md:px-0 pb-4 md:pb-0">
-              <Link to={user.user.role === "admin" ? "/admin" : "/user"}><button className="w-full md:w-auto px-6 py-2 rounded-lg bg-[#e3eefd] text-[#1c180d] font-bold hover:bg-blue-100 transition-colors">Dashboard</button></Link>
+              <Link to={user.user.role === "superadmin" ? "/superadmin" : user.user.role === "admin" ? "/admin" : "/user"}><button className="w-full md:w-auto px-6 py-2 rounded-lg bg-[#e3eefd] text-[#1c180d] font-bold hover:bg-blue-100 transition-colors">Dashboard</button></Link>
               <Link to="/scanner"><button className="w-full md:w-auto px-6 py-2 rounded-lg bg-blue-100 text-[#1c180d] font-bold hover:bg-blue-200 transition-colors">QR Scanner</button></Link>
               <button onClick={handlelogout} className="w-full md:w-auto px-6 py-2 rounded-lg bg-blue-400 text-white font-bold hover:bg-blue-500 transition-colors">Logout</button>
             </div>

@@ -11,6 +11,7 @@ import UserPage from './Pages/UserPage'
 import QRScannerPage from './Pages/QRScannerPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
+import SuperAdminPage from './Pages/SuperAdminPage'
 
 const App = () => {
   return (
@@ -56,6 +57,14 @@ const App = () => {
                     element={
                         <ProtectedRoute allowedRoles={['user', 'admin']}>
                             <QRScannerPage/>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route 
+                    path='/superadmin' 
+                    element={
+                        <ProtectedRoute allowedRoles={['superadmin']}>
+                            <SuperAdminPage/>
                         </ProtectedRoute>
                     }
                 />

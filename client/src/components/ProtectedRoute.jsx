@@ -19,6 +19,9 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   // Check if user's role is allowed
   if (!allowedRoles.includes(user.user.role)) {
     // Redirect to appropriate dashboard based on role
+    if (user.user.role === 'superadmin') {
+      return <Navigate to="/superadmin" replace />;
+    }
     return <Navigate to={user.user.role === 'admin' ? '/admin' : '/user'} replace />;
   }
 

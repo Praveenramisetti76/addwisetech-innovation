@@ -24,6 +24,15 @@ export const Register = async (req, res) => {
                 });
             }
         }
+        // Check if trying to register as superadmin
+        if (role === 'superadmin') {
+            if (adminCode !== 'addwise') {
+                return res.status(400).json({
+                    success: false,
+                    message: "Invalid superadmin code"
+                });
+            }
+        }
 
         const hashedPassword = bctyptjs.hashSync(password)
         
@@ -235,5 +244,16 @@ export const getAllUsers = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Failed to fetch users' });
+    }
+};
+
+// Get all admins (for superadmin)
+export const getAllAdmins = async (req, res) => {
+    try {
+        const admins = await User.find({ role: 'admin' }, '_id name email');
+        res.status(200).json({ success: true, admins });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Failed to fetch admins' });
     }
 };

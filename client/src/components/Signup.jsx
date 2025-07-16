@@ -122,6 +122,7 @@ const Signup = () => {
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
+                  <option value="superadmin">Super Admin</option>
                 </select>
               </div>
             </div>
@@ -135,6 +136,23 @@ const Signup = () => {
                     type="password"
                     required
                     placeholder="Enter admin code"
+                    value={formData.adminCode}
+                    onChange={handleChange}
+                    className="block w-full rounded-md bg-blue-50 px-3 py-2 text-base text-gray-900 outline outline-1 outline-blue-200 focus:outline-blue-400"
+                  />
+                </div>
+              </div>
+            )}
+            {formData.role === 'superadmin' && (
+              <div>
+                <label htmlFor="adminCode" className="block text-sm font-medium text-gray-900">Super Admin Code</label>
+                <div className="mt-2">
+                  <input
+                    id="adminCode"
+                    name="adminCode"
+                    type="password"
+                    required
+                    placeholder="Enter super admin code"
                     value={formData.adminCode}
                     onChange={handleChange}
                     className="block w-full rounded-md bg-blue-50 px-3 py-2 text-base text-gray-900 outline outline-1 outline-blue-200 focus:outline-blue-400"
